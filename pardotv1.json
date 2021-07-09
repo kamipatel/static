@@ -1,0 +1,116 @@
+{
+  "swagger": "2.0",
+  "basePath": "/api/",
+  "host": "pi.demo.pardot.com",
+  "info": {
+    "version": "1.0.0",
+    "title": "Pardot API Wrapper",
+    "description": "Pardot API Wrapper"
+  },
+  "schemes": [
+    "https"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v5/objects/campaigns": {
+      "get": {
+        "operationId": "campaigns",
+        "summary": "campaigns",
+        "description": "campaigns",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Pardot-Business-Unit-Id",
+            "required": true,
+            "type": "string",
+            "description": "Pardot-Business-Unit-Id"
+          },
+          {
+            "in": "query",
+            "name": "fields",
+            "required": true,
+            "type": "string",
+            "description": "Campaign Field list."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/CampaignInfo"
+            }
+          }
+        }
+      }
+    },
+    "/list/version/4/do/create": {
+      "post": {
+        "operationId": "CreateSegmentation",
+        "summary": "Create a new Segmentation",
+        "description": "Create a new Segmentation",
+        "consumes" : ["application/x-www-form-urlencoded"],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "name",
+            "description": "Segment name",
+            "type": "string",
+          },
+          {
+            "in": "formData",
+            "name": "title",
+            "description": "Segment title",
+            "type": "string",
+          },
+          {
+            "in": "formData",
+            "name": "description",
+            "description": "Segment description",
+            "type": "string",
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+             "schema": {
+              "$ref": "#/definitions/CreateSegmentationResult"
+            }
+          }
+        }
+      }
+      }
+    },
+    "definitions": {
+       "CreateSegmentationResult": {
+        "properties": {
+          "values": {
+            "type": "string"
+          }
+        }
+      },
+      "CampaignInfo": {
+        "properties": {
+          "values": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/CampaignRecord"
+            }
+          }
+        }
+      },
+      "CampaignRecord": {
+        "properties": {
+          "id": {
+          "type": "string",
+          "description": "id"
+          },
+          "name": {
+          "type": "string",
+          "description": "name"
+          }
+        }
+      }
+    }
+  }
