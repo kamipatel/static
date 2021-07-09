@@ -50,35 +50,49 @@
         "operationId": "CreateSegmentation",
         "summary": "Create a new Segmentation",
         "description": "Create a new Segmentation",
-        "consumes" : ["application/x-www-form-urlencoded"],
-        "parameters": [
-          {
-            "in": "formData",
-            "name": "name",
-            "description": "Segment name",
+        "consumes":  [
+                "application/x-www-form-urlencoded"
+            ],
+            "produces":  [
+                "application/json"
+            ],
+           "parameters": [
+            {
+            "in": "header",
+            "name": "Pardot-Business-Unit-Id",
+            "required": true,
             "type": "string",
+            "description": "Pardot-Business-Unit-Id"
           },
-          {
-            "in": "formData",
-            "name": "title",
-            "description": "Segment title",
-            "type": "string",
-          },
-          {
-            "in": "formData",
-            "name": "description",
-            "description": "Segment description",
-            "type": "string",
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "successful operation",
-             "schema": {
-              "$ref": "#/definitions/CreateSegmentationResult"
+             {
+                "description": "name field",
+                "name": "name",
+                "in":  "formData",
+                "type": "string",
+                "required": true
+            },{
+                "description": "title field",
+                "name": "title",
+                "in":  "formData",
+                "type": "string",
+                "required": true
+            },
+            {
+                "description": "description feild",
+                "name": "description",
+                "in":  "formData",
+                "type": "string",
+                "required": true
             }
-          }
-        }
+            ],        
+            "responses": {
+                "200": {
+                    "description": "200",
+                    "schema": {
+                       "$ref": "#/definitions/CreateSegmentationResult"
+                    }
+                }
+            }        
       }
       }
     },
