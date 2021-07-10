@@ -1,0 +1,84 @@
+{
+  "swagger": "2.0",
+  "basePath": "/api/list/version/4/do/",
+  "host": "pi.demo.pardot.com",
+  "info": {
+    "version": "1.0.0",
+    "title": "Pardot API Wrapper",
+    "description": "Pardot API Wrapper"
+  },
+  "schemes": [
+    "https"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/create": {
+      "post": {
+        "operationId": "CreateSegmentation",
+        "summary": "Create a new Segmentation",
+        "description": "Create a new Segmentation",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+          "in": "query",
+          "name": "format",
+          "type": "string",
+          "description": "format type",
+          "default": "json"
+          },
+          {
+            "in": "header",
+            "name": "Pardot-Business-Unit-Id",
+            "type": "string",
+            "description": "Pardot-Business-Unit-Id"
+          },
+          {
+            "description": "name field",
+            "name": "name",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          },
+          {
+            "description": "title field",
+            "name": "title",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          },
+          {
+            "description": "description feild",
+            "name": "description",
+            "in": "formData",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+ "200": {
+            "description": "200",
+            "schema": {
+               "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CreateSegmentationResult": {
+    "properties": {
+          "values": {
+            "type": "string"
+          }
+        }
+    }
+  }
+}
